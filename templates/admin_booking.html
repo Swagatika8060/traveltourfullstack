@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin | Manage Bookings</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        
+            <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+            <li><a href="{{ url_for('admin_booking') }}" class="active">Bookings</a></li>
+            <li><a href="{{ url_for('admin_destination') }}">Destinations</a></li>
+            <li><a href="{{ url_for('home') }}">View Site</a></li>
+        
+    </nav>
+</header>
+<section class="admin-page">
+    <h1>Manage Bookings</h1>
+<div class="container">
+    
+    <!-- 🔍 SEARCH -->
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Search by name, destination..."
+        class="search-box"
+    >
+
+    <!-- 📋 BOOKINGS TABLE -->
+    <table id="bookingTable">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                
+                <th>Destination</th>
+                <th>Contact</th>
+                <th>Package</th>
+                <th>Adults</th>
+                <th>Children</th>
+                <th> Date</th>
+                <th>Total Price</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+        {% for booking in bookings %}
+            <tr>
+                <td>{{ booking.id }}</td>
+                <td>{{ booking.name }}</td>
+                <td>{{ booking.destination }}</td>
+                <td>{{ booking.contact }}</td>
+                <td>{{ booking.package }}</td>
+                <td>{{ booking.adults }}</td>
+                <td>{{ booking.children }}</td>
+                <td>{{ booking.date }}</td>
+                <td>₹{{ booking.total_price }}</td>
+                <td class="action-btns">
+
+                    <!-- ✏️ EDIT -->
+                    <a
+                        href="{{ url_for('edit_booking', id=booking.id) }}"
+                        class="btn-edit">
+                        Edit
+                    </a>
+
+                    <!-- 🗑️ DELETE (POST SAFE) -->
+                    <form
+                        action="{{ url_for('delete_booking', id=booking.id) }}"
+                        method="POST"
+                        style="display:inline;"
+                        onsubmit="return confirm('Delete this booking?');">
+
+                        <button type="submit" class="btn-delete">
+                            Delete
+                        </button>
+                    </form>
+
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8" style="text-align:center;">
+                    No bookings found
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<!-- ✅ MAIN JS -->
+<script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+
+</body>
+</html>

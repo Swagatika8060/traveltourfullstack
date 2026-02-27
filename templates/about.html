@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Indian Heritage Tour</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- <script defer src="/static/js/main.js"></script> -->
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('about') }}">About</a></li>
+                <li><a href="{{ url_for('destination') }}">Destination</a></li>
+                <li><a href="{{ url_for('booking') }}">Booking</a></li>
+
+                <li><a href="{{ url_for('history') }}">History</a></li>
+                <li><a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a></li>
+
+    </nav>
+</header>
+
+<section class="content">
+    <h1>About Indian Heritage Tour</h1>
+    <p>Indian Heritage Tour brings you closer to the rich cultural, spiritual and architectural wonders of India.</p>
+    <p>Our mission is to promote heritage tourism and help everyone explore beautiful temples, monuments, rivers, and traditions.</p>
+    <p>Whether you're seeking spiritual solace, historical insights, or cultural immersion, we have the perfect tour for you.</p>
+    <p>Join us to experience the soul of India through unforgettable journeys.</p>
+    <p>We also offer customized packages for private groups and special occasions.</p>
+    <p>Contact us to start planning your heritage adventure today!</p>
+</section>
+<section class="fade-in">
+  <h2>Popular Destinations</h2>
+  <div class="cards">
+    <div class="card"><img src="/static/images/vrindavan1.jpg"><h3>Vrindavan</h3></div>
+    <div class="card"><img src="/static/images/jaipur1.jpg"><h3>Jaipur</h3></div>
+    <div class="card"><img src="/static/images/puri.jpg"><h3>Puri</h3></div>
+    <div class="card"><img src="/static/images/varanasi.jpg"><h3>Varanasi</h3></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-section">
+      <h3>Indian Heritage Tours</h3>
+      <p>Discover the cultural richness and historical wonders of India through meaningful travel experiences.</p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/destination">Destinations</a></li>
+        <li><a href="/booking">Booking</a></li>
+        <li><a href="/history">History</a></li>
+        <li><a href="/about">About Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <p>Email: support@indianheritagetours.in</p>
+      <p>Phone: +91 94380 54510</p>
+      
+      <div class="social-icons">
+        <a href="#"><img src="/static/images/facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="/static/images/instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="/static/images/twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="/static/images/youtube.png" alt="YouTube"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Indian Heritage Tours. All rights reserved.</p>
+  </div>
+</footer>
+<script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin - Destinations</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+    <li><a href="{{ url_for('admin_destination') }}" class="active">Destinations</a></li>
+    <li><a href="{{ url_for('home') }}">Home</a></li>
+  </nav>
+</header>
+<section class="admin-page">
+  <h2>Manage Destinations</h2>
+</section>
+<div class="container">
+  
+  
+
+  <!-- ✅ ADD DESTINATION -->
+  <form action="{{ url_for('admin_destination') }}" method="POST" class="form-box">
+    <label>Name</label>
+    <input type="text" name="name" required>
+
+    <label>State</label>
+    <input type="text" name="state" required>
+
+    <label>Description</label>
+    <textarea name="description" required></textarea>
+
+    <label>Contact</label>
+    <input type="text" name="contact" placeholder="Contact number" required>
+
+    <label>Price per Adult</label>
+    <input type="number" name="price" required>
+
+    <label>Image Filename</label>
+    <input type="text" name="image" placeholder="prem_mandir.jpg">
+
+    <button type="submit" class="btn">Add Destination</button>
+  </form>
+
+  <!-- ✅ SEARCH -->
+  <input
+    type="text"
+    id="searchInputDest"
+    placeholder="Search destinations..."
+    class="search-box"
+  >
+
+  <!-- ✅ DESTINATION TABLE (IMPORTANT ID FIX) -->
+  <table id="destinationTable">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>State</th>
+        <th>Description</th>
+        <th>Contact</th>
+        <th>Image</th>
+        <th>Price</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for dest in destinations %}
+      <tr>
+        <td>{{ dest.id }}</td>
+        <td>{{ dest.name }}</td>
+        <td>{{ dest.state }}</td>
+        <td>{{ dest.description }}</td>
+        <td>{{ dest.contact }}</td>
+        <td>
+          <img
+            src="{{ url_for('static', filename='images/' ~ dest.image) }}"
+            width="80"
+          >
+        </td>
+        <td>₹{{ dest.price }}</td>
+
+        <td class="action-cell">
+          <!-- ✅ EDIT -->
+          <a href="{{ url_for('edit_destination', id=dest.id) }}"
+             class="btn-edit">Edit</a>
+
+          <!-- ✅ DELETE -->
+          <form
+            action="{{ url_for('delete_destination', id=dest.id) }}"
+            method="POST"
+            class="delete-form"
+            onsubmit="return confirm('Delete this destination?')"
+          >
+            <button type="submit" class="btn-delete">Delete</button>
+          </form>
+        </td>
+      </tr>
+      {% else %}
+      <tr>
+        <td colspan="8" style="text-align:center;">
+          No destinations found
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+</div>
+
+<!-- ✅ JS -->
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+
+</body>
+</html>

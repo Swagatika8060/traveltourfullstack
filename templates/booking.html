@@ -1,0 +1,115 @@
+
+ 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Booking - Indian Heritage Tour</title>
+
+    <link rel="stylesheet" href="/static/css/style.css">
+    <!-- <script defer src="/static/js/main.js"></script> -->
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+      
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('destination') }}">Destination</a></li>
+            <li><a href="{{ url_for('booking') }}">Booking</a></li>
+            <li><a href="{{ url_for('history') }}">History</a></li>
+            <li><a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a></li>
+      
+    </nav>
+</header>
+
+<section class="page-animate">
+    <h1>Book Your Tour</h1>
+
+    
+    <form id="bookingForm" class="booking-form">
+
+  <label>Name</label>
+  <input type="text" id="nameInput" name="name" required>
+
+  <label>Destination</label>
+
+  <select id="destination" name="destination" required>
+  
+  {% for dest in destinations %}
+    <option 
+      value="{{ dest.name }}" 
+      data-price="{{ dest.price }}">
+      {{ dest.name }} – ₹{{ dest.price }}
+    </option>
+  {% endfor %}
+</select>
+
+
+  <label>Contact</label>
+  <input type="text" id="contact" name="contact" required>
+
+  <label>Package</label>
+  <select name="package" id="package" required>
+    <option value="Standard" data-mult="1">Standard (3 Days)</option>
+    <option value="Deluxe" data-mult="2.5">Deluxe (5 Days)</option>
+    <option value="Luxury" data-mult="5">Luxury (7 Days)</option>
+  </select>
+
+  <label>Adults</label>
+  <input type="number" id="adultsInput" name="adults" min="1" value="1">
+
+  <label>Children</label>
+  <input type="number" id="childrenInput" name="children" min="0" value="0">
+
+  <label>Date</label>
+  <input type="date" id="dateInput" name="date" required>
+
+  <label>Total Price</label>
+  <input type="number" id="total_price" name="total_price" readonly>
+
+  <button type="submit" class="btn">Book Now</button>
+</form>
+    </section>
+
+   <footer class="site-footer">
+  <div class="footer-top">
+    <div class="footer-section">
+      <h3>Indian Heritage Tours</h3>
+      <p>Discover the cultural richness and historical wonders of India through meaningful travel experiences.</p>
+    </div>
+
+    <div class="footer-section">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a href="/home">Home</a></li>
+        <li><a href="/destination">Destinations</a></li>
+        <li><a href="/booking">Booking</a></li>
+        <li><a href="/history">History</a></li>
+        <li><a href="/about">About Us</a></li>
+      </ul>
+    </div>
+
+    <div class="footer-section">
+      <h4>Contact</h4>
+      <p>Email: support@indianheritagetours.in</p>
+      <p>Phone: +91 94380 54510</p>
+      
+      <div class="social-icons">
+        <a href="#"><img src="/static/images/facebook.png" alt="Facebook"></a>
+        <a href="#"><img src="/static/images/instagram.png" alt="Instagram"></a>
+        <a href="#"><img src="/static/images/twitter.png" alt="Twitter"></a>
+        <a href="#"><img src="/static/images/youtube.png" alt="YouTube"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <p>© 2026 Indian Heritage Tours. All rights reserved.</p>
+  </div>
+</footer>
+<script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+</body>
+</html>

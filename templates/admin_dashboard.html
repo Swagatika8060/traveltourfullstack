@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+    <nav class="navbar">
+        
+            <li><a href="{{ url_for('home') }}">Home</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('destination') }}">Destination</a></li>
+            <li><a href="{{ url_for('booking') }}">Booking</a></li>
+            <li><a href="{{ url_for('history') }}">History</a></li>
+            <li><a href="{{ url_for('admin_dashboard') }}">Admin Dashboard</a></li>
+        
+    </nav>
+</header>
+
+<div class="container admin-page">
+    <h1>Admin Dashboard</h1>
+
+    <div class="dashboard-cards">
+
+        <!-- Total Destinations -->
+        <div class="admin-card">
+            <h3>Total Destinations</h3>
+            <p>{{ total_dest }}</p>
+            <a href="{{ url_for('admin_destination') }}" class="btn-card">
+                Manage Destinations
+            </a>
+        </div>
+
+        <!-- Total Bookings -->
+        <div class="admin-card">
+            <h3>Total Bookings</h3>
+            <p>{{ total_bookings }}</p>
+            <a href="{{ url_for('admin_booking') }}" class="btn-card">
+                Manage Bookings
+            </a>
+        </div>
+
+    </div>
+</div>
+<footer class="site-footer">
+    <div class="footer-top">
+
+        <div class="footer-section">
+            <h3>Indian Heritage Tours</h3>
+            <p>
+                Discover the cultural richness and historical wonders of India
+                through meaningful travel experiences.
+            </p>
+        </div>
+
+        <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="{{ url_for('home') }}">Home</a></li>
+                <li><a href="{{ url_for('destination') }}">Destinations</a></li>
+                <li><a href="{{ url_for('booking') }}">Booking</a></li>
+                <li><a href="{{ url_for('history') }}">History</a></li>
+                <li><a href="{{ url_for('about') }}">About Us</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h4>Contact</h4>
+            <p>Email: support@indianheritagetours.in</p>
+            <p>Phone: +91 94380 54510</p>
+            <div class="social-icons">
+                <a href="#"><img src="/static/images/facebook.png" alt="Facebook"></a>
+                <a href="#"><img src="/static/images/instagram.png" alt="Instagram"></a>
+                <a href="#"><img src="/static/images/twitter.png" alt="Twitter"></a>
+                <a href="#"><img src="/static/images/youtube.png" alt="YouTube"></a>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <p>© 2026 Indian Heritage Tours. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="{{ url_for('static', filename='js/main.js') }}" defer></script>
+
+</body>
+</html>

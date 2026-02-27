@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Destination</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<header>
+  <nav class="navbar">
+    
+      <li><a href="{{ url_for('admin_dashboard') }}">Dashboard</a></li>
+      <li><a href="{{ url_for('admin_destination') }}">Destinations</a></li>
+      <li><a href="{{ url_for('home') }}">Home</a></li>
+    
+  </nav>
+</header>
+
+<div class="container">
+  <h2>Edit Destination</h2>
+
+  <form action="{{ url_for('edit_destination', id=destination.id) }}" method="POST" class="form-box">
+    <label for="name">Name</label>
+    <input type="text" name="name" id="name" value="{{ destination.name }}" required>
+
+    <label for="state">State</label>
+    <input type="text" name="state" id="state" value="{{ destination.state }}" required>
+
+  
+    <label for="description">Description</label>
+    <textarea name="description" id="description" required>{{ destination.description }}</textarea>
+
+    <label for="contact">Contact</label>
+    <input type="text" name="contact" id="contact" value="{{ destination.contact }}" required>
+
+    <label for="price">Price per Adult</label>
+    <input type="number" name="price" id="price" value="{{ destination.price }}" step="500" required>
+
+    <label for="image">Image Filename</label>
+    <input type="text" name="image" id="image" value="{{ destination.image }}">
+
+    <div class="form-actions">
+      <button type="submit" class="btn">Update Destination</button>
+      <a href="{{ url_for('admin_destination') }}" class="btn-cancel">Cancel</a>
+    </div>
+  </form>
+</div>
+
+</body>
+</html>

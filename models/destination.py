@@ -1,4 +1,4 @@
-from tkinter.messagebox import IGNORE
+# from tkinter.messagebox import IGNORE
 from models.database import db
 from datetime import datetime
 

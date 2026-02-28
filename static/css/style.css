@@ -68,7 +68,7 @@ background: linear-gradient(
 rgba(168, 134, 134, 0.45),
 rgba(0,0,0,0.45)
 ),
-url("{{ url_for('static', filename='images/hero1.jpg') }}") center/cover no-repeat;
+/* url("{{ url_for('static', filename='images/hero1.jpg') }}") center/cover no-repeat; */
 display: flex;
 align-items: center;
 justify-content: center;
